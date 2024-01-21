@@ -58,6 +58,12 @@ public class OrderServiceUnitTests {
 
     }
 
+
+    @Test
+    void deleteProductQTAtOrder() {
+
+    }
+
     @Test
     void createNewOrder() {
         Product laptop = new Product("Laptop", 3);
@@ -71,6 +77,7 @@ public class OrderServiceUnitTests {
         Assertions.assertNotNull(orderService.order("1A", orderlist, "Testowa 5/21", "ABC01"));
         Assertions.assertThrows(RuntimeException.class, () -> orderService.order("1A", orderlistFalse, "Testowa 5/21", "ABC02"));
 
+        Assertions.assertEquals(1, laptop.getProductQt());
     }
 
     @Test

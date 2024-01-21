@@ -35,9 +35,22 @@ public class OrderService {
         return true;
     }
 
+    public void  deleteQtFromProductList(Map<Product, Integer> productIntegerMap){
+        for(Map.Entry<Product, Integer> entry: productIntegerMap.entrySet()){
+            Product product = entry.getKey();
+            Integer requstedQt = entry.getValue();
+            for(Product productInStorage: productList.getProductList()){
+                if(product.equals(productInStorage)){
+                    product.setProductQt(product.getProductQt() - requstedQt);
+                }
+            }
+        }
+
+    }
 
     public Order order(String userID, Map<Product, Integer> productIntegerMap, String orderAddress, String orderID){
         if(checkIfCanOrderProducts(productIntegerMap)){
+            deleteQtFromProductList(productIntegerMap);
             return new Order(userID, productIntegerMap, orderAddress, orderID);
         }
         throw new RuntimeException("This product can't be ordered");
