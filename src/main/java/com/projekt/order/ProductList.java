@@ -9,8 +9,8 @@ public class ProductList {
 
     private final List<Product> productList;
 
-    public ProductList(List<Product> productList) {
-        this.productList = productList;
+    public ProductList() {
+        this.productList = new ArrayList<>();
     }
 
     public List<Product> getProductList() {

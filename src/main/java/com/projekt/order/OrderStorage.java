@@ -8,8 +8,8 @@ public class OrderStorage {
 
     private final List<Order> orderList;
 
-    public OrderStorage(List<Order> orderList) {
-        this.orderList = orderList;
+    public OrderStorage() {
+        this.orderList = new ArrayList<>();
     }
 
     public List<Order> getOrderList() {

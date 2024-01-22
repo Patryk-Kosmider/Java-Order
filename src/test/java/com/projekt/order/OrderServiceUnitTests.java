@@ -61,6 +61,15 @@ public class OrderServiceUnitTests {
 
     @Test
     void deleteProductQTAtOrder() {
+        MockitoAnnotations.openMocks(this);
+        Product laptop = new Product("Laptop", 3);
+        Map <Product, Integer> productIntegerMap = new HashMap<>();
+        productIntegerMap.put(laptop, 2);
+
+        Mockito.when(productList.getProductList()).thenReturn(List.of(laptop));
+
+        orderService.deleteQtFromProductList(productIntegerMap);
+        Assertions.assertEquals(1, laptop.getProductQt());
 
     }
 
